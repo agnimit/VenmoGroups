@@ -1,0 +1,94 @@
+<html ng-app="mainApp" ng-controller="mainCtrl">
+	<head>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
+        <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.11.2.js"></script>
+        <script src="controller.js"></script>
+        <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+        <link type="text/css" rel="stylesheet" href="stylesheet.css"/>
+        <script src="https://cdn.firebase.com/js/client/1.0.21/firebase.js"></script>
+        <script src="https://cdn.firebase.com/libs/angularfire/0.8.2/angularfire.min.js"></script>
+	    <title>My Groups</title>
+  	</head>
+  	<body class="myBody">
+    <div class="sidebar">
+    	<table class="table table-hover">
+    		<thead>
+    			<tr>
+    				<th>
+                    <input type="email" ng-model="matchedKey" placeholder="Search groups"> 
+                    <!-- <input type="text" ng-model="selected" placeholder="Search For a Group" typeahead="key as key for key in data.groups | filter:$viewValue" typeahead-loading="loadingLocations" class="form-control"> -->
+                    <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+                        <div ng-controller="ModalAddGroupCtrl">
+                            <script type="text/ng-template" id="myModalContent1.html">
+                                <div class="modal-header">
+                                    <h3 class="modal-title">Create a group!</h3>
+                                </div>
+                                <div class="modal-body">
+                                    <ul>
+                                        <div class="modalForm">
+                                          <input class="form-control" ng-model="Amount" placeholder="Group Name" style="margin-bottom:10px;">
+                                          <input class="form-control" ng-model="newName" placeholder="List of Friends">
+                                        </div>
+                                    </ul>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-primary" ng-click="ok()">OK</button>
+                                    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+                                </div>
+                            </script>
+
+                            <button class="btn btn-default" ng-click="open('sm')">Add Group</button>
+                        </div>
+    			</tr>
+    		</thead>
+    		<tbody id="tb">
+    			<tr ng-repeat="(key,val) in data.groups">
+    				<td>{{key}}</td>
+    			</tr>
+    		</tbody>	
+    	</table>
+    </div>
+    <div id="myTable">
+    	<h2 id="title">Transactions</h2>
+        <div ng-controller="ModalDemoCtrl">
+            <script type="text/ng-template" id="myModalContent.html">
+                <div class="modal-header">
+                    <h3 class="modal-title">Enter your Transaction!</h3>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        <div class="modalForm">
+                          <input class="form-control" ng-model="Amount" placeholder="Amount" style="margin-bottom:10px;">
+                          <input class="form-control" ng-model="newName" placeholder="Name of Transaction">
+                        </div>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" ng-click="ok()">OK</button>
+                    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+                </div>
+            </script>
+
+            <button class="btn btn-default" ng-click="open('sm')">Add Transaction</button>
+        </div>
+	    <table class="table table-striped" id="table1">
+	    	<thead>
+	    		<tr>
+	    			<th>Sender</th>
+	    			<th>Recepient</th>
+	    			<th>Name</th>
+	    			<th>Amount</th>
+	    		</tr>
+	    	</thead>
+	    	<tbody>
+	    		<tr ng-repeat="row in data.groups.hello.transactions">
+	    			<td>{{ row.sender }}</td>
+	    			<td>5 </td>
+	    			<td>{{ row.name }}</td>
+	    			<td>{{ row.price }}</td>
+	    		</tr>
+	    	</tbody>
+	    </table>
+	</div>
+  	</body>
+</html>

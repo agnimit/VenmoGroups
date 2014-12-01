@@ -1,0 +1,44 @@
+.myBody{
+	background-color: #C2D6D6;
+}
+
+#myTable{
+	padding-top: 2%;
+	padding-left: 20%;
+	padding-right: 5%;
+	text-align: center;
+}
+
+#title{
+	text-align: center;
+}
+
+.sidebar{
+	background-color: #3366CC;
+	padding-bottom: 50px;
+	width:18%;
+	height:100%;
+	float:left;
+}
+
+.myList{
+	list-style-type: none;
+}
+
+#search{
+	width:80%;
+}
+
+#tb tr td{
+	background-color: #3366CC;
+	height:75;
+	text-align: center;
+	font-family: Century Gothic, sans-serif;
+	vertical-align: middle;
+	color:white;
+
+}
+
+#img{
+	padding-bottom: 10%;
+}
